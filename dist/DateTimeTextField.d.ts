@@ -1,12 +1,14 @@
 import * as React from 'react';
 interface ComponentProps {
-    name: string;
+    name?: string;
     label: string;
     value: Date | null;
     endAdornment: React.ReactNode;
     autoFocus: boolean;
     setFieldValue?: (field: any, value: any) => void;
     setFieldTouched?: (field: any) => void;
+    onChange?: (value: Date | null) => void;
+    onBlur?: () => void;
     onDateChange?: (dateValue: Date) => void;
     required: boolean;
     fullWidth: boolean;

@@ -8,17 +8,11 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import CalendarIcon from '@material-ui/icons/CalendarTodayTwoTone';
 import IconButton from '@material-ui/core/IconButton';
 import Calendar from './Calendar';
-import withMobileDialog from '@material-ui/core/withMobileDialog';
-import compose from 'recompose/compose';
 import * as moment_ from 'moment';
 
 const moment = moment_;
 
-interface ComponentProps extends FinalComponentProps {
-    fullScreen: boolean;
-}
-
-interface FinalComponentProps {
+interface ComponentProps {
     label?: string;
     name?: string;
     autoFocus?: boolean;
@@ -110,7 +104,7 @@ class MuiPersianDateTimePicker extends React.Component<ComponentProps, Component
     };
 
     public render() {
-        const { name, required, label, autoFocus, setFieldValue, onChange, setFieldTouched, onBlur, error, fullScreen, fullWidth, margin, variant, helperText, inputMode } = this.props;
+        const { name, required, label, autoFocus, setFieldValue, onChange, setFieldTouched, onBlur, error, fullWidth, margin, variant, helperText, inputMode } = this.props;
         const { calendarDialogOpen, calendarDate, inputDate } = this.state;
         return <React.Fragment>
             <DateTimeTextField
@@ -136,7 +130,6 @@ class MuiPersianDateTimePicker extends React.Component<ComponentProps, Component
                 key={`date-input-dialog-${name || ''}`}
                 open={calendarDialogOpen}
                 onClose={this.cancelCalendarDialog}
-                fullScreen={fullScreen}
             >
                 <DialogContent>
                     <Calendar onDateChange={this.saveCalendarDate} date={calendarDate} inputMode={inputMode || 'datetime'} />
@@ -157,6 +150,4 @@ class MuiPersianDateTimePicker extends React.Component<ComponentProps, Component
     }
 }
 
-export default compose<ComponentProps, FinalComponentProps>(
-    withMobileDialog({ breakpoint: 'xs' })
-)(MuiPersianDateTimePicker);
+export default MuiPersianDateTimePicker;

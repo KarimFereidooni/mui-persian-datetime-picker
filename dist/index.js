@@ -18,8 +18,6 @@ var DialogContent = _interopDefault(require('@material-ui/core/DialogContent'));
 var DialogActions = _interopDefault(require('@material-ui/core/DialogActions'));
 var InputAdornment = _interopDefault(require('@material-ui/core/InputAdornment'));
 var CalendarIcon = _interopDefault(require('@material-ui/icons/CalendarTodayTwoTone'));
-var withMobileDialog = _interopDefault(require('@material-ui/core/withMobileDialog'));
-var compose = _interopDefault(require('recompose/compose'));
 var moment_ = require('moment');
 
 /*! *****************************************************************************
@@ -223,6 +221,9 @@ var DateTimeTextField = /** @class */ (function (_super) {
             if (_this.props.setFieldValue) {
                 _this.props.setFieldValue(_this.props.name, result);
             }
+            if (_this.props.onChange) {
+                _this.props.onChange(result);
+            }
             if (fireOnDateChange && _this.props.onDateChange && result) {
                 _this.props.onDateChange(result);
             }
@@ -246,6 +247,9 @@ var DateTimeTextField = /** @class */ (function (_super) {
             }
             if (_this.props.setFieldTouched) {
                 _this.props.setFieldTouched(_this.props.name);
+            }
+            if (_this.props.onBlur) {
+                _this.props.onBlur();
             }
         };
         _this.dateFormat = _this.props.inputMode === 'datetime' ? 'jYYYY/jMM/jDD HH:mm' : 'jYYYY/jMM/jDD';
@@ -335,13 +339,13 @@ var MuiPersianDateTimePicker = /** @class */ (function (_super) {
         return new Date(t.getFullYear(), t.getMonth(), t.getDate(), 0, 0, 0, 0);
     };
     MuiPersianDateTimePicker.prototype.render = function () {
-        var _a = this.props, name = _a.name, required = _a.required, label = _a.label, autoFocus = _a.autoFocus, setFieldValue = _a.setFieldValue, setFieldTouched = _a.setFieldTouched, error = _a.error, fullScreen = _a.fullScreen, fullWidth = _a.fullWidth, margin = _a.margin, variant = _a.variant, helperText = _a.helperText, inputMode = _a.inputMode;
+        var _a = this.props, name = _a.name, required = _a.required, label = _a.label, autoFocus = _a.autoFocus, setFieldValue = _a.setFieldValue, onChange = _a.onChange, setFieldTouched = _a.setFieldTouched, onBlur = _a.onBlur, error = _a.error, fullWidth = _a.fullWidth, margin = _a.margin, variant = _a.variant, helperText = _a.helperText, inputMode = _a.inputMode;
         var _b = this.state, calendarDialogOpen = _b.calendarDialogOpen, calendarDate = _b.calendarDate, inputDate = _b.inputDate;
         return React.createElement(React.Fragment, null,
-            React.createElement(DateTimeTextField, { name: name, value: inputDate, autoFocus: autoFocus ? true : false, setFieldValue: setFieldValue, setFieldTouched: setFieldTouched, onDateChange: this.saveInputDate, endAdornment: React.createElement(InputAdornment, { position: "end" },
+            React.createElement(DateTimeTextField, { name: name, value: inputDate, autoFocus: autoFocus ? true : false, setFieldValue: setFieldValue, setFieldTouched: setFieldTouched, onChange: onChange, onBlur: onBlur, onDateChange: this.saveInputDate, endAdornment: React.createElement(InputAdornment, { position: "end" },
                     React.createElement(IconButton, { onClick: this.openCalendarDialog },
                         React.createElement(CalendarIcon, null))), error: error || false, helperText: helperText || "", required: required ? true : false, fullWidth: fullWidth ? true : false, margin: margin ? margin : 'none', label: label ? label : '', variant: variant ? variant : 'standard', inputMode: inputMode || 'datetime' }),
-            React.createElement(Dialog, { key: "date-input-dialog-" + name, open: calendarDialogOpen, onClose: this.cancelCalendarDialog, fullScreen: fullScreen },
+            React.createElement(Dialog, { key: "date-input-dialog-" + (name || ''), open: calendarDialogOpen, onClose: this.cancelCalendarDialog },
                 React.createElement(DialogContent, null,
                     React.createElement(Calendar, { onDateChange: this.saveCalendarDate, date: calendarDate, inputMode: inputMode || 'datetime' })),
                 React.createElement(DialogActions, null,
@@ -361,9 +365,8 @@ var MuiPersianDateTimePicker = /** @class */ (function (_super) {
     };
     return MuiPersianDateTimePicker;
 }(React.Component));
-var MuiPersianDateTimePicker$1 = compose(withMobileDialog({ breakpoint: 'xs' }))(MuiPersianDateTimePicker);
 
 exports.DateTimeTextField = DateTimeTextField;
 exports.Calendar = Calendar;
-exports.default = MuiPersianDateTimePicker$1;
+exports.default = MuiPersianDateTimePicker;
 //# sourceMappingURL=index.js.map
