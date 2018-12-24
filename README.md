@@ -28,7 +28,7 @@ class Example extends React.Component {
 ```
 
 ## Props
-
+```
 value    Date
 inputMode    'datetime' | 'date'
 label    material-ui TextField label
@@ -40,6 +40,7 @@ helperText    material-ui TextField helperText
 error    material-ui TextField error
 margin    material-ui TextField margin
 variant    material-ui TextField variant
+```
 
 ## License
 
