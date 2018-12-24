@@ -34,6 +34,12 @@ class Example extends React.Component {
 #### inputMode
 - `'datetime' | 'date'`
 
+#### onChange
+- `(Date | null) => void`
+
+#### onBlur
+- `() => void`
+
 #### label
 - like material-ui TextField label property
 

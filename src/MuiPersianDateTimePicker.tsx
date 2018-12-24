@@ -20,10 +20,12 @@ interface ComponentProps extends FinalComponentProps {
 
 interface FinalComponentProps {
     label?: string;
-    name: string;
+    name?: string;
     autoFocus?: boolean;
-    setFieldValue?: (field: any, value: any) => void;
-    setFieldTouched?: (field: any) => void;
+    setFieldValue?: (field: string, value: Date) => void;
+    setFieldTouched?: (field: string) => void;
+    onChange?: (value: Date | null) => void;
+    onBlur?: () => void;
     required?: boolean;
     fullWidth?: boolean;
     value: Date | null;
@@ -108,7 +110,7 @@ class MuiPersianDateTimePicker extends React.Component<ComponentProps, Component
     };
 
     public render() {
-        const { name, required, label, autoFocus, setFieldValue, setFieldTouched, error, fullScreen, fullWidth, margin, variant, helperText, inputMode } = this.props;
+        const { name, required, label, autoFocus, setFieldValue, onChange, setFieldTouched, onBlur, error, fullScreen, fullWidth, margin, variant, helperText, inputMode } = this.props;
         const { calendarDialogOpen, calendarDate, inputDate } = this.state;
         return <React.Fragment>
             <DateTimeTextField
@@ -117,6 +119,8 @@ class MuiPersianDateTimePicker extends React.Component<ComponentProps, Component
                 autoFocus={autoFocus ? true : false}
                 setFieldValue={setFieldValue}
                 setFieldTouched={setFieldTouched}
+                onChange={onChange}
+                onBlur={onBlur}
                 onDateChange={this.saveInputDate}
                 endAdornment={<InputAdornment position="end"><IconButton onClick={this.openCalendarDialog}><CalendarIcon /></IconButton></InputAdornment>}
                 error={error || false}
@@ -129,7 +133,7 @@ class MuiPersianDateTimePicker extends React.Component<ComponentProps, Component
                 inputMode={inputMode || 'datetime'}
             />
             <Dialog
-                key={`date-input-dialog-${name}`}
+                key={`date-input-dialog-${name || ''}`}
                 open={calendarDialogOpen}
                 onClose={this.cancelCalendarDialog}
                 fullScreen={fullScreen}

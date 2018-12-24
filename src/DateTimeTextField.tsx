@@ -6,13 +6,15 @@ import InputMask from 'react-input-mask';
 const jMoment = jMoment_;
 
 interface ComponentProps {
-    name: string;
+    name?: string;
     label: string;
     value: Date | null;
     endAdornment: React.ReactNode;
     autoFocus: boolean;
     setFieldValue?: (field: any, value: any) => void;
     setFieldTouched?: (field: any) => void;
+    onChange?: (value: Date | null) => void;
+    onBlur?: () => void;
     onDateChange?: (dateValue: Date) => void;
     required: boolean;
     fullWidth: boolean;
@@ -123,6 +125,9 @@ class DateTimeTextField extends React.Component<ComponentProps, ComponentState> 
         if (this.props.setFieldValue) {
             this.props.setFieldValue(this.props.name as string, result);
         }
+        if (this.props.onChange) {
+            this.props.onChange(result);
+        }
         if (fireOnDateChange && this.props.onDateChange && result) {
             this.props.onDateChange(result);
         }
@@ -148,6 +153,9 @@ class DateTimeTextField extends React.Component<ComponentProps, ComponentState> 
         }
         if (this.props.setFieldTouched) {
             this.props.setFieldTouched(this.props.name);
+        }
+        if (this.props.onBlur) {
+            this.props.onBlur();
         }
     };
 }
