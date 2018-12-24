@@ -8,6 +8,7 @@
 
 ```bash
 yarn add mui-persian-datetime-picker
+npm install --save mui-persian-datetime-picker
 ```
 
 ## Usage
@@ -25,6 +26,20 @@ class Example extends React.Component {
   }
 }
 ```
+
+## Props
+
+value    Date
+inputMode    'datetime' | 'date'
+label    material-ui TextField label
+name    material-ui TextField name
+autoFocus    material-ui TextField autoFocus
+required    material-ui TextField required
+fullWidth    material-ui TextField fullWidth
+helperText    material-ui TextField helperText
+error    material-ui TextField error
+margin    material-ui TextField margin
+variant    material-ui TextField variant
 
 ## License
 
