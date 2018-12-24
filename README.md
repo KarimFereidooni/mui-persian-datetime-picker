@@ -7,7 +7,7 @@
 ## Install
 
 ```bash
-npm install --save mui-persian-datetime-picker
+yarn add mui-persian-datetime-picker
 ```
 
 ## Usage
@@ -15,12 +15,12 @@ npm install --save mui-persian-datetime-picker
 ```tsx
 import * as React from 'react'
 
-import MyComponent from 'mui-persian-datetime-picker'
+import PersianDateTimePicker from 'mui-persian-datetime-picker'
 
 class Example extends React.Component {
   render () {
     return (
-      <MyComponent />
+      <PersianDateTimePicker name="dateTime" label="My date time" inputMode="datetime" fullWidth />
     )
   }
 }
