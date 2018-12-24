@@ -21,11 +21,18 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@material-ui/core": "^3.7.1",
+    "@material-ui/icons": "^3.0.1",
+    "moment": "^2.23.0",
+    "moment-jalaali": "^0.8.3",
+    "react-input-mask": "^2.0.4"
+  },
   "peerDependencies": {
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0"
+    "react-dom": "^15.0.0 || ^16.0.0",
+    "recompose": "^0.30.0"
   },
   "devDependencies": {
     "@svgr/rollup": "^2.4.1",

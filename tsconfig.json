@@ -12,11 +12,13 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "noEmit": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "build", "dist", "example", "rollup.config.js"]
