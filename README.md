@@ -28,19 +28,39 @@ class Example extends React.Component {
 ```
 
 ## Props
-```
-value             Date
-inputMode        'datetime' | 'date'
-label             material-ui TextField label
-name              material-ui TextField name
-autoFocus         material-ui TextField autoFocus
-required          material-ui TextField required
-fullWidth         material-ui TextField fullWidth
-helperText        material-ui TextField helperText
-error             material-ui TextField error
-margin            material-ui TextField margin
-variant           material-ui TextField variant
-```
+#### value
+- `Date`
+
+#### inputMode
+- `'datetime' | 'date'`
+
+#### label
+- like material-ui TextField label property
+
+#### name
+- like material-ui TextField name property
+
+#### autoFocus
+- like material-ui TextField autoFocus property
+
+#### required
+- like material-ui TextField required property
+
+#### fullWidth
+- like material-ui TextField fullWidth property
+
+#### helperText
+- like material-ui TextField helperText property
+
+#### error
+- like material-ui TextField error property
+
+#### margin
+- like material-ui TextField margin property
+
+#### variant
+- like material-ui TextField variant property
+
 
 ## License
 
