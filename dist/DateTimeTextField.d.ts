@@ -17,6 +17,8 @@ interface ComponentProps {
     margin: "dense" | "none" | "normal";
     variant: 'standard' | 'outlined' | 'filled';
     inputMode: 'datetime' | 'date';
+    className?: string;
+    style?: React.CSSProperties;
 }
 interface ComponentState {
     value: string;

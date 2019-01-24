@@ -269,11 +269,11 @@ var DateTimeTextField = /** @class */ (function (_super) {
     };
     DateTimeTextField.prototype.render = function () {
         var _this = this;
-        var _a = this.props, name = _a.name, endAdornment = _a.endAdornment, autoFocus = _a.autoFocus, label = _a.label, error = _a.error, required = _a.required, fullWidth = _a.fullWidth, margin = _a.margin, variant = _a.variant, helperText = _a.helperText;
+        var _a = this.props, name = _a.name, endAdornment = _a.endAdornment, autoFocus = _a.autoFocus, label = _a.label, error = _a.error, required = _a.required, fullWidth = _a.fullWidth, margin = _a.margin, variant = _a.variant, helperText = _a.helperText, className = _a.className, style = _a.style;
         return createElement(InputMask, { maskChar: "-", mask: this.props.inputMode === "datetime" ? '1399/99/99 99:99' : '1399/99/99', value: this.state.value, onChange: this.onChange, onBlur: this.onBlur, onFocus: this.onFocus }, function (inputProps) {
             return createElement(TextField, __assign({}, inputProps, {
                 variant: variant
-            }, { name: name, required: required, type: "text", error: error, fullWidth: fullWidth, label: label, helperText: helperText ? helperText : (_this.state.dateValue ? (jMoment$1(_this.state.dateValue).format('dddd، jDD jMMMM jYYYY')) : ""), margin: margin, InputProps: { endAdornment: endAdornment }, inputProps: {
+            }, { name: name, required: required, type: "text", className: className, style: style, error: error, fullWidth: fullWidth, label: label, helperText: helperText ? helperText : (_this.state.dateValue ? (jMoment$1(_this.state.dateValue).format('dddd، jDD jMMMM jYYYY')) : ""), margin: margin, InputProps: { endAdornment: endAdornment }, inputProps: {
                     style: { textAlign: 'right', direction: 'ltr' }
                 }, autoFocus: autoFocus, placeholder: _this.props.inputMode === "datetime" ? '13--/--/-- 00:00' : '13--/--/--' }));
         });
@@ -333,12 +333,12 @@ var MuiPersianDateTimePicker = /** @class */ (function (_super) {
         return new Date(t.getFullYear(), t.getMonth(), t.getDate(), 0, 0, 0, 0);
     };
     MuiPersianDateTimePicker.prototype.render = function () {
-        var _a = this.props, name = _a.name, required = _a.required, label = _a.label, autoFocus = _a.autoFocus, setFieldValue = _a.setFieldValue, onChange = _a.onChange, setFieldTouched = _a.setFieldTouched, onBlur = _a.onBlur, error = _a.error, fullWidth = _a.fullWidth, margin = _a.margin, variant = _a.variant, helperText = _a.helperText, inputMode = _a.inputMode;
+        var _a = this.props, name = _a.name, required = _a.required, label = _a.label, autoFocus = _a.autoFocus, setFieldValue = _a.setFieldValue, onChange = _a.onChange, setFieldTouched = _a.setFieldTouched, onBlur = _a.onBlur, error = _a.error, fullWidth = _a.fullWidth, margin = _a.margin, variant = _a.variant, helperText = _a.helperText, inputMode = _a.inputMode, className = _a.className, style = _a.style;
         var _b = this.state, calendarDialogOpen = _b.calendarDialogOpen, calendarDate = _b.calendarDate, inputDate = _b.inputDate;
         return createElement(Fragment, null,
             createElement(DateTimeTextField, { name: name, value: inputDate, autoFocus: autoFocus ? true : false, setFieldValue: setFieldValue, setFieldTouched: setFieldTouched, onChange: onChange, onBlur: onBlur, onDateChange: this.saveInputDate, endAdornment: createElement(InputAdornment, { position: "end" },
                     createElement(IconButton, { onClick: this.openCalendarDialog },
-                        createElement(CalendarIcon, null))), error: error || false, helperText: helperText || "", required: required ? true : false, fullWidth: fullWidth ? true : false, margin: margin ? margin : 'none', label: label ? label : '', variant: variant ? variant : 'standard', inputMode: inputMode || 'datetime' }),
+                        createElement(CalendarIcon, null))), error: error || false, helperText: helperText || "", required: required ? true : false, fullWidth: fullWidth ? true : false, margin: margin ? margin : 'none', label: label ? label : '', variant: variant ? variant : 'standard', inputMode: inputMode || 'datetime', className: className, style: style }),
             createElement(Dialog, { key: "date-input-dialog-" + (name || ''), open: calendarDialogOpen, onClose: this.cancelCalendarDialog },
                 createElement(DialogContent, null,
                     createElement(Calendar, { onDateChange: this.saveCalendarDate, date: calendarDate, inputMode: inputMode || 'datetime' })),
