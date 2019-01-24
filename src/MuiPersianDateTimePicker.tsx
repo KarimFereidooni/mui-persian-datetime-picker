@@ -28,6 +28,8 @@ interface ComponentProps {
     margin?: "dense" | "none" | "normal";
     variant?: 'standard' | 'outlined' | 'filled';
     inputMode?: 'datetime' | 'date';
+    className?: string;
+    style?: React.CSSProperties;
 }
 
 interface ComponentState {
@@ -104,7 +106,7 @@ class MuiPersianDateTimePicker extends React.Component<ComponentProps, Component
     };
 
     public render() {
-        const { name, required, label, autoFocus, setFieldValue, onChange, setFieldTouched, onBlur, error, fullWidth, margin, variant, helperText, inputMode } = this.props;
+        const { name, required, label, autoFocus, setFieldValue, onChange, setFieldTouched, onBlur, error, fullWidth, margin, variant, helperText, inputMode, className, style } = this.props;
         const { calendarDialogOpen, calendarDate, inputDate } = this.state;
         return <React.Fragment>
             <DateTimeTextField
@@ -125,6 +127,8 @@ class MuiPersianDateTimePicker extends React.Component<ComponentProps, Component
                 label={label ? label : ''}
                 variant={variant ? variant : 'standard'}
                 inputMode={inputMode || 'datetime'}
+                className={className}
+                style={style}
             />
             <Dialog
                 key={`date-input-dialog-${name || ''}`}

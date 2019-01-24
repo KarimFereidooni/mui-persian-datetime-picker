@@ -23,6 +23,8 @@ interface ComponentProps {
     margin: "dense" | "none" | "normal";
     variant: 'standard' | 'outlined' | 'filled';
     inputMode: 'datetime' | 'date';
+    className?: string;
+    style?: React.CSSProperties;
 }
 
 interface ComponentState {
@@ -82,7 +84,7 @@ class DateTimeTextField extends React.Component<ComponentProps, ComponentState> 
     };
 
     public render() {
-        const { name, endAdornment, autoFocus, label, error, required, fullWidth, margin, variant, helperText } = this.props;
+        const { name, endAdornment, autoFocus, label, error, required, fullWidth, margin, variant, helperText, className, style } = this.props;
         return <InputMask maskChar="-" mask={this.props.inputMode === "datetime" ? '1399/99/99 99:99' : '1399/99/99'} value={this.state.value} onChange={this.onChange} onBlur={this.onBlur} onFocus={this.onFocus}>
             {(inputProps) =>
                 <TextField
@@ -93,6 +95,8 @@ class DateTimeTextField extends React.Component<ComponentProps, ComponentState> 
                     name={name}
                     required={required}
                     type="text"
+                    className={className}
+                    style={style}
                     error={error}
                     fullWidth={fullWidth}
                     label={label}
